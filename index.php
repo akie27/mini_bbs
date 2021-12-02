@@ -16,7 +16,7 @@ if(isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()){
 
 // 投稿を記録する
 if(!empty($_POST) && $_POST['message'] != ''){
-    $message = $db->prepare('INSERT INTO posts SET member_id=?, message=?, reply_post_id=?, created=NOW()');
+    $message = $db->prepare('INSERT INTO (posts) VALUES (member_id=?, message=?, reply_post_id=?, created=NOW())');
     $message->execute(array(
       $member['id'],
       $_POST['message'],

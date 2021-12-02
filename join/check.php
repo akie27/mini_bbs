@@ -9,12 +9,13 @@ if(!isset($_SESSION['join'])){
 
 if(!empty($_POST)){
   // 登録処理をする
-  $stmt = $db->prepare('INSERT INTO members SET name=?, email=?, password=?, picture=?, created=NOW()');
-  echo $ret = $stmt->execute(array(
+  $stmt = $db->prepare('INSERT INTO members(name, email, password, picture, created)  VALUES (?, ?, ?, ?, NOW()');
+  $stmt->execute(array(
     $_SESSION['join']['name'],
     $_SESSION['join']['email'],
     sha1($_SESSION['join']['password']),
-    $_SESSION['join']['image']
+    $_SESSION['join']['image'],
+    $_SESSION['join']['created']
   ));
   unset($_SESSION['join']);
 

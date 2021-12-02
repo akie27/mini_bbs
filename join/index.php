@@ -38,7 +38,7 @@ if(!empty($_POST)){
   if(empty($error)){
     // 画像をアップロードする
     $image = date('YmdHis') . $_FILES['image']['name'];
-    move_uploaded_file($_FILES['imagee']['tmp_name'], '../member_picture/' . $image);
+    move_uploaded_file($_FILES['image']['tmp_name'], '../member_picture/' . $image);
 
     $_SESSION['join'] = $_POST;
     $_SESSION['join']['image'] = $image;
